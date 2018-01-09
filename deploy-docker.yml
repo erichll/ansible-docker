@@ -1,0 +1,9 @@
+---
+
+- hosts: docker
+  become: yes
+  roles:
+    - role: docker/docker
+  tags:
+    - docker
+

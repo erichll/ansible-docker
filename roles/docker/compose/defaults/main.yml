@@ -1,0 +1,15 @@
+---
+
+compose_version: "1.15.0"
+
+compose_download_url: "https://github.com/docker/compose/releases/download/{{ compose_version }}/docker-compose-Linux-x86_64"
+
+compose_install_dir: "/usr/local/bin"
+
+compose_install_bin_file: "{{ compose_install_dir }}/docker-compose-{{ compose_version }}"
+
+compose_bin_file: "{{ compose_install_dir }}/docker-compose"
+
+
+
+

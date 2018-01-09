@@ -1,0 +1,29 @@
+---
+
+- name: check whether compose downloaded
+  stat: 
+    path: "{{ compose_install_bin_file }}"
+  register: compose_downloaded_check
+  
+- name: download compose
+  get_url:
+    url: "{{ compose_download_url }}"
+    dest: "{{ compose_install_bin_file }}"
+    validate_certs: no
+    timeout: 30
+  when: not compose_downloaded_check.stat.exists
+
+- name: chmod compose
+  file:
+    path: "{{ compose_install_bin_file }}"
+    owner: root
+    group: root
+    mode: 0751
+
+- name: install compose
+  file:
+    src: "{{ compose_install_bin_file }}"
+    dest: "{{ compose_bin_file }}"
+    owner: root
+    group: root
+    state: link
